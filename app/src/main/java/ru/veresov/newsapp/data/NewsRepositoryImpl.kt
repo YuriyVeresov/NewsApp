@@ -2,40 +2,41 @@ package ru.veresov.newsapp.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ru.veresov.newsapp.data.model.ResponseDataState
 import ru.veresov.newsapp.domain.api.NewsApi
 import ru.veresov.newsapp.domain.api.ApiDataFetch
+import ru.veresov.newsapp.domain.api.ApiResult
 import ru.veresov.newsapp.domain.api.model.BlockSource
 import ru.veresov.newsapp.domain.api.model.Source
 import ru.veresov.newsapp.domain.repository.NewsRepository
-import javax.inject.Inject
 
-class NewsRepositoryImpl @Inject constructor(
+class NewsRepositoryImpl(
     private val api: NewsApi,
 ) : ApiDataFetch(), NewsRepository {
 
-
     private val _newsData =
-        MutableLiveData<ru.veresov.newsapp.data.model.ResponseDataState<List<BlockSource>>>()
-    val newData: LiveData<ru.veresov.newsapp.data.model.ResponseDataState<List<BlockSource>>> get() = _newsData
+        MutableLiveData<ResponseDataState<List<BlockSource>>>()
+    val newData: LiveData<ResponseDataState<List<BlockSource>>> get() = _newsData
 
     override suspend fun loadNews() {
-        _newsData.postValue(ru.veresov.newsapp.data.model.ResponseDataState.Loading)
-        val result = getResponse { api.loadSources() }
+        _newsData.postValue(ResponseDataState.Loading)
 
-        if (result.isSuccess) {
-            val response = result.getOrThrow()
-            try {
-                val news = response.sources
-                groupSourcesByCategory(sources = news)
-            } catch (t: Throwable) {
-                _newsData.postValue(
-                    ru.veresov.newsapp.data.model.ResponseDataState.Error(
-                        response.message,
-                        response.code
-                    )
-                )
+        when (val result = getResponse { api.loadSources() }) {
+            is ApiResult.Error.ApiError -> {
+                _newsData.postValue(ResponseDataState.Error(result.message, result.code))
             }
 
+            is ApiResult.Error.NetworkError -> {
+                _newsData.postValue(ResponseDataState.Error(result.message, result.code.toString()))
+            }
+
+            is ApiResult.Error.UnknownError -> {
+                _newsData.postValue(ResponseDataState.Error(result.message, null))
+            }
+
+            is ApiResult.Success -> {
+                groupSourcesByCategory(result.data.sources)
+            }
         }
 
     }
@@ -49,8 +50,7 @@ class NewsRepositoryImpl @Inject constructor(
             val capitalizedCategory = category.replaceFirstChar { it.uppercaseChar() }
             result.add(BlockSource(capitalizedCategory, groupedMap[category] ?: emptyList()))
         }
-
-        _newsData.value = ru.veresov.newsapp.data.model.ResponseDataState.Success(result)
+        _newsData.value = ResponseDataState.Success(result)
     }
 
 

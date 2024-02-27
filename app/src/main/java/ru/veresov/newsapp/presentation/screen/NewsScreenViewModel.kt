@@ -25,7 +25,7 @@ class NewsScreenViewModel @Inject constructor(
         loadData()
     }
 
-    private fun loadData() {
+    fun loadData() {
         viewModelScope.launch {
             repository.loadNews()
         }
