@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="code">Code: %1$s</string>
+    <string name="retry">Retry</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="unknown_error">unknown error</string>
+    <string name="unknown_code">unknown code</string>
+</resources>

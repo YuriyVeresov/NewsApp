@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import ru.veresov.newsapp.BuildConfig
 import ru.veresov.newsapp.data.NewsRepositoryImpl
-import ru.veresov.newsapp.domain.api.NewsApi
+import ru.veresov.newsapp.data.api.NewsApi
 import ru.veresov.newsapp.domain.repository.NewsRepository
 import java.text.SimpleDateFormat
 import java.util.Date

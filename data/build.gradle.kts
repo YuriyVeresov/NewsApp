@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -34,8 +36,23 @@ android {
 
 dependencies {
     implementation(project(":domain"))
-    implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //retrofit
+    val retrofitVersion = "2.9.0"
+    api("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    api("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
+    //moshi
+    val moshiVersion = "1.14.0"
+    api("com.squareup.moshi:moshi-kotlin:$moshiVersion")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+    //okhttp
+    val okhttpVersion = "4.12.0"
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    api("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+    //coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 }
