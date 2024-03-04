@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ru.veresov.newsapp.presentation.provider.ProvideViewModel
+import ru.veresov.newsapp.presentation.screen.HeadlinesScreen
 import ru.veresov.newsapp.presentation.screen.NewsScreen
 import ru.veresov.newsapp.presentation.screen.NewsScreenViewModel
 import ru.veresov.newsapp.presentation.theme.NewsAppTheme
@@ -29,7 +30,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = NewsAppTheme.colorScheme.backgroundColor
                 ) {
-                    NewsScreen(viewModel)
+                    //NewsScreen(viewModel)
+                    HeadlinesScreen()
                 }
             }
         }

@@ -2,163 +2,163 @@ package ru.veresov.newsapp.data.api.model.request
 
 import com.squareup.moshi.Json
 
-enum class Country {
+enum class Country(val description: String) {
     @Json(name = "ae")
-    AE,
+    AE("United Arab Emirates"),
 
     @Json(name = "ar")
-    AR,
+    AR("Argentina"),
 
     @Json(name = "at")
-    AT,
+    AT("Austria"),
 
     @Json(name = "au")
-    AU,
+    AU("Australia"),
 
     @Json(name = "be")
-    BE,
+    BE("Belgium"),
 
     @Json(name = "bg")
-    BG,
+    BG("Bulgaria"),
 
     @Json(name = "br")
-    BR,
+    BR("Brazil"),
 
     @Json(name = "ca")
-    CA,
+    CA("Canada"),
 
     @Json(name = "ch")
-    CH,
+    CH("Switzerland"),
 
     @Json(name = "cn")
-    CN,
+    CN("China"),
 
     @Json(name = "co")
-    CO,
+    CO("Colombia"),
 
     @Json(name = "cu")
-    CU,
+    CU("Cuba"),
 
     @Json(name = "cz")
-    CZ,
+    CZ("Czech Republic"),
 
     @Json(name = "de")
-    DE,
+    DE("Germany"),
 
     @Json(name = "eg")
-    EG,
+    EG("Egypt"),
 
     @Json(name = "fr")
-    FR,
+    FR("France"),
 
     @Json(name = "gb")
-    GB,
+    GB("United Kingdom"),
 
     @Json(name = "gr")
-    GR,
+    GR("Greece"),
 
     @Json(name = "hk")
-    HK,
+    HK("Hong Kong"),
 
     @Json(name = "hu")
-    HU,
+    HU("Hungary"),
 
     @Json(name = "id")
-    ID,
+    ID("Indonesia"),
 
     @Json(name = "ie")
-    IE,
+    IE("Ireland"),
 
     @Json(name = "il")
-    IL,
+    IL("Israel"),
 
     @Json(name = "it")
-    IT,
+    IT("Italy"),
 
     @Json(name = "jp")
-    JP,
+    JP("Japan"),
 
     @Json(name = "kr")
-    KR,
+    KR("South Korea"),
 
     @Json(name = "lt")
-    LT,
+    LT("Lithuania"),
 
     @Json(name = "lv")
-    LV,
+    LV("Latvia"),
 
     @Json(name = "ma")
-    MA,
+    MA("Morocco"),
 
     @Json(name = "mx")
-    MX,
+    MX("Mexico"),
 
     @Json(name = "my")
-    MY,
+    MY("Malaysia"),
 
     @Json(name = "ng")
-    NG,
+    NG("Nigeria"),
 
     @Json(name = "nl")
-    NL,
+    NL("Netherlands"),
 
     @Json(name = "no")
-    NO,
+    NO("Norway"),
 
     @Json(name = "nz")
-    NZ,
+    NZ("New Zealand"),
 
     @Json(name = "ph")
-    PH,
+    PH("Philippines"),
 
     @Json(name = "pl")
-    PL,
+    PL("Poland"),
 
     @Json(name = "pt")
-    PT,
+    PT("Portugal"),
 
     @Json(name = "ro")
-    RO,
+    RO("Romania"),
 
     @Json(name = "rs")
-    RS,
+    RS("Serbia"),
 
     @Json(name = "ru")
-    RU,
+    RU("Russia"),
 
     @Json(name = "sa")
-    SA,
+    SA("Saudi Arabia"),
 
     @Json(name = "se")
-    SE,
+    SE("Sweden"),
 
     @Json(name = "sg")
-    SG,
+    SG("Singapore"),
 
     @Json(name = "si")
-    SI,
+    SI("Slovenia"),
 
     @Json(name = "sk")
-    SK,
+    SK("Slovakia"),
 
     @Json(name = "th")
-    TH,
+    TH("Thailand"),
 
     @Json(name = "tr")
-    TR,
+    TR("Turkey"),
 
     @Json(name = "tw")
-    TW,
+    TW("Taiwan"),
 
     @Json(name = "ua")
-    UA,
+    UA("Ukraine"),
 
     @Json(name = "us")
-    US,
+    US("United States"),
 
     @Json(name = "ve")
-    VE,
+    VE("Venezuela"),
 
     @Json(name = "za")
-    ZA
+    ZA("South Africa")
 }

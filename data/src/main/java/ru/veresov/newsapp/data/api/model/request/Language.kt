@@ -2,46 +2,46 @@ package ru.veresov.newsapp.data.api.model.request
 
 import com.squareup.moshi.Json
 
-enum class Language {
+enum class Language(val description: String) {
     @Json(name = "ar")
-    AR,
+    AR("Arabic"),
 
     @Json(name = "de")
-    DE,
+    DE("German"),
 
     @Json(name = "en")
-    EN,
+    EN("English"),
 
     @Json(name = "es")
-    ES,
+    ES("Spanish"),
 
     @Json(name = "fr")
-    FR,
+    FR("French"),
 
     @Json(name = "he")
-    HE,
+    HE("Hebrew"),
 
     @Json(name = "it")
-    IT,
+    IT("Italian"),
 
     @Json(name = "nl")
-    NL,
+    NL("Dutch"),
 
     @Json(name = "no")
-    NO,
+    NO("Norwegian"),
 
     @Json(name = "pt")
-    PT,
+    PT("Portuguese"),
 
     @Json(name = "ru")
-    RU,
+    RU("Russian"),
 
     @Json(name = "sv")
-    SV,
+    SV("Swedish"),
 
     @Json(name = "ud")
-    UD,
+    UD("Undefined"),
 
     @Json(name = "zh")
-    ZH,
+    ZH("Chinese")
 }

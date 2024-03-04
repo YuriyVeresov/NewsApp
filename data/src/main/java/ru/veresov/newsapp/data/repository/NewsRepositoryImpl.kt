@@ -1,11 +1,12 @@
-package ru.veresov.newsapp.data
+package ru.veresov.newsapp.data.repository
 
 import ru.veresov.newsapp.data.api.ApiDataFetch
 import ru.veresov.newsapp.data.api.ApiResult
 import ru.veresov.newsapp.data.api.NewsApi
 import ru.veresov.newsapp.data.api.model.BlockSourceDto
 import ru.veresov.newsapp.data.api.model.SourceDto
-import ru.veresov.newsapp.domain.model.ResultBlockSource
+import ru.veresov.newsapp.domain.model.BlockSource
+import ru.veresov.newsapp.domain.model.ResponseResult
 import ru.veresov.newsapp.domain.repository.NewsRepository
 
 
@@ -13,25 +14,25 @@ class NewsRepositoryImpl(
     private val api: NewsApi,
 ) : ApiDataFetch(), NewsRepository {
 
-    override suspend fun loadNews(): ResultBlockSource {
+    override suspend fun loadNews(): ResponseResult<BlockSource> {
 
         when (val result = getResponse { api.loadSources() }) {
             is ApiResult.Error.ApiError -> {
-                return ResultBlockSource.Error(result.message, result.code)
+                return ResponseResult.Error(result.message, result.code)
             }
 
             is ApiResult.Error.NetworkError -> {
-                return ResultBlockSource.Error(result.message, result.code.toString())
+                return ResponseResult.Error(result.message, result.code.toString())
             }
 
             is ApiResult.Error.UnknownError -> {
-                return ResultBlockSource.Error(result.message, null)
+                return ResponseResult.Error(result.message, null)
             }
 
             is ApiResult.Success -> {
                 val newsBlocksDto = groupSourcesByCategory(result.data.sources)
                 val newsBlocks = newsBlocksDto.map { it.toBlockSource() }
-                return ResultBlockSource.Success(newsBlocks)
+                return ResponseResult.Success(newsBlocks)
             }
         }
 

@@ -3,25 +3,25 @@ package ru.veresov.newsapp.data.api.model.request
 import com.squareup.moshi.Json
 
 
-enum class Category {
+enum class Category(val description: String) {
     @Json(name = "business")
-    BUSINESS,
+    BUSINESS(description = "Business"),
 
     @Json(name = "entertainment")
-    ENTERTAINMENT,
+    ENTERTAINMENT(description = "Entertainment"),
 
     @Json(name = "general")
-    GENERAL,
+    GENERAL(description = "General"),
 
     @Json(name = "health")
-    HEALTH,
+    HEALTH(description = "Health"),
 
     @Json(name = "science")
-    SCIENCE,
+    SCIENCE(description = "Science"),
 
     @Json(name = "sports")
-    SPORTS,
+    SPORTS(description = "Sports"),
 
     @Json(name = "technology")
-    TECHNOLOGY
+    TECHNOLOGY(description = "Technology")
 }
