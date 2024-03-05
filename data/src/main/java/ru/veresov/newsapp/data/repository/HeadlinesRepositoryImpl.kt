@@ -1,6 +1,7 @@
 package ru.veresov.newsapp.data.repository
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import ru.veresov.newsapp.data.api.ApiDataFetch
 import ru.veresov.newsapp.data.api.ApiResult
 import ru.veresov.newsapp.data.api.NewsApi
@@ -9,9 +10,10 @@ import ru.veresov.newsapp.domain.model.Article
 import ru.veresov.newsapp.domain.model.ResponseResult
 import ru.veresov.newsapp.domain.repository.HeadlinesRepository
 import java.util.Locale
+import javax.inject.Inject
 
-class HeadlinesRepositoryImpl(
-    private val context: Context,
+class HeadlinesRepositoryImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val api: NewsApi,
 ) : ApiDataFetch(), HeadlinesRepository {
 

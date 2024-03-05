@@ -55,4 +55,5 @@ dependencies {
     api("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
     //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("com.google.dagger:hilt-android:2.50")
 }

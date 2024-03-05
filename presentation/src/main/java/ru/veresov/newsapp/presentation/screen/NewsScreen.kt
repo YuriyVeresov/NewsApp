@@ -14,14 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ru.veresov.newsapp.R
 import ru.veresov.newsapp.presentation.component.ErrorAlertDialog
 import ru.veresov.newsapp.presentation.component.NewsBlock
 import ru.veresov.newsapp.presentation.screen.state.ResponseDataState
 
 @Composable
-fun NewsScreen(viewModel: NewsScreenViewModel) {
+fun NewsScreen() {
 
+    val viewModel: NewsScreenViewModel = hiltViewModel()
     val state = viewModel.externalResponseData.observeAsState()
 
     state.value?.let { responseState ->

@@ -12,21 +12,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import ru.veresov.newsapp.BuildConfig
-import ru.veresov.newsapp.data.repository.NewsRepositoryImpl
 import ru.veresov.newsapp.data.api.NewsApi
-import ru.veresov.newsapp.domain.repository.NewsRepository
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 import javax.inject.Singleton
 
+
 private const val BASE_URL = "https://newsapi.org/v2/"
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
-
+object NetworkModule {
     @Provides
     @Singleton
     fun createRequestInterceptor() = Interceptor { chain ->
@@ -82,11 +80,4 @@ object AppModule {
     fun provideNewsApi(retrofit: Retrofit): NewsApi {
         return retrofit.create(NewsApi::class.java)
     }
-
-    @Provides
-    @Singleton
-    fun provideNewsRepository(api: NewsApi): NewsRepository {
-        return NewsRepositoryImpl(api)
-    }
-
 }

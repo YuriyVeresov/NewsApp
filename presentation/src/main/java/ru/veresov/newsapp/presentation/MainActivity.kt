@@ -8,20 +8,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import ru.veresov.newsapp.presentation.provider.ProvideViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import ru.veresov.newsapp.presentation.screen.HeadlinesScreen
-import ru.veresov.newsapp.presentation.screen.NewsScreen
-import ru.veresov.newsapp.presentation.screen.NewsScreenViewModel
 import ru.veresov.newsapp.presentation.theme.NewsAppTheme
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
-        val viewModel: NewsScreenViewModel =
-            (application as ProvideViewModel).viewModel()
 
         setContent {
             NewsAppTheme {
@@ -30,7 +25,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = NewsAppTheme.colorScheme.backgroundColor
                 ) {
-                    //NewsScreen(viewModel)
                     HeadlinesScreen()
                 }
             }

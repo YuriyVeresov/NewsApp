@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.veresov.newsapp.domain.model.Article
 import ru.veresov.newsapp.domain.model.ResponseResult
@@ -11,7 +12,7 @@ import ru.veresov.newsapp.domain.repository.HeadlinesRepository
 import ru.veresov.newsapp.presentation.screen.state.ResponseDataState
 import javax.inject.Inject
 
-
+@HiltViewModel
 class HeadlinesScreenViewModel @Inject constructor(
     private val headlinesRepository: HeadlinesRepository,
 ) : ViewModel() {

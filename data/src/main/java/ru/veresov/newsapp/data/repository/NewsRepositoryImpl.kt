@@ -8,9 +8,10 @@ import ru.veresov.newsapp.data.api.model.SourceDto
 import ru.veresov.newsapp.domain.model.BlockSource
 import ru.veresov.newsapp.domain.model.ResponseResult
 import ru.veresov.newsapp.domain.repository.NewsRepository
+import javax.inject.Inject
 
 
-class NewsRepositoryImpl(
+class NewsRepositoryImpl @Inject constructor(
     private val api: NewsApi,
 ) : ApiDataFetch(), NewsRepository {
 
